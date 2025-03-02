@@ -1,5 +1,5 @@
 
-package database.datos;
+package datosDAO;
 
 import datos.interfaces.CRUDGeneralInterface;
 import entidades.Categoria;

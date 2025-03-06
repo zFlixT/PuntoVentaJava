@@ -60,11 +60,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMenuItem1.setText("Categorias");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
         MnuAlmacen.add(jMenuItem1);
 
         jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_DOWN_MASK));
@@ -159,14 +154,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     private void MnuAlmacenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnuAlmacenActionPerformed
-
-    }//GEN-LAST:event_MnuAlmacenActionPerformed
-
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
- FrmCategoria frmCategoria = new FrmCategoria();
+    
+    FrmCategoria frmCategoria = new FrmCategoria();
     Escritorio.add(frmCategoria);
-    frmCategoria.setVisible(true);        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    frmCategoria.setVisible(true);
+    }//GEN-LAST:event_MnuAlmacenActionPerformed
 
     /**
      * @param args the command line arguments

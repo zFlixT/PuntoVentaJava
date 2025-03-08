@@ -1,14 +1,12 @@
 
 package presentacion;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.JDesktopPane;
 
 public class FrmPrincipal extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FrmPrincipal
-     */
     public FrmPrincipal() {
         initComponents();
         setExtendedState(MAXIMIZED_BOTH);
@@ -23,7 +21,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Escritorio =  new javax.swing.JDesktopPane(){
+        Escritorio = new javax.swing.JDesktopPane(){
             protected void paintComponent(Graphics g){
                 super.paintComponent(g);
                 g.setColor(Color.white);
@@ -37,7 +35,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         MnuCompras = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
-        MnoVentas = new javax.swing.JMenu();
+        MnuVentas = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         MnuAcceso = new javax.swing.JMenu();
@@ -46,20 +44,21 @@ public class FrmPrincipal extends javax.swing.JFrame {
         MnuConsultas = new javax.swing.JMenu();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
+        MnuSalir = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("PuntoVenta");
+        setTitle("puntoVenta");
 
+        MnuAlmacen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/presentacion/images/Almacen.png"))); // NOI18N
         MnuAlmacen.setText("Almacen");
-        MnuAlmacen.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnuAlmacenActionPerformed(evt);
-            }
-        });
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMenuItem1.setText("Categorias");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         MnuAlmacen.add(jMenuItem1);
 
         jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_DOWN_MASK));
@@ -68,6 +67,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         menuBar.add(MnuAlmacen);
 
+        MnuCompras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/presentacion/images/Compras.png"))); // NOI18N
         MnuCompras.setText("Compras");
 
         jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_DOWN_MASK));
@@ -76,27 +76,24 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMenuItem4.setText("Ingresos");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
-            }
-        });
         MnuCompras.add(jMenuItem4);
 
         menuBar.add(MnuCompras);
 
-        MnoVentas.setText("Ventas");
+        MnuVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/presentacion/images/Ventas.png"))); // NOI18N
+        MnuVentas.setText("Ventas");
 
         jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMenuItem5.setText("Clientes");
-        MnoVentas.add(jMenuItem5);
+        MnuVentas.add(jMenuItem5);
 
         jMenuItem6.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMenuItem6.setText("Ventas");
-        MnoVentas.add(jMenuItem6);
+        MnuVentas.add(jMenuItem6);
 
-        menuBar.add(MnoVentas);
+        menuBar.add(MnuVentas);
 
+        MnuAcceso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/presentacion/images/Acceso.png"))); // NOI18N
         MnuAcceso.setText("Acceso");
 
         jMenuItem7.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_DOWN_MASK));
@@ -109,25 +106,22 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         menuBar.add(MnuAcceso);
 
+        MnuConsultas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/presentacion/images/Consultas.png"))); // NOI18N
         MnuConsultas.setText("Consultas");
 
         jMenuItem9.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        jMenuItem9.setText("Consultas Compras");
-        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem9ActionPerformed(evt);
-            }
-        });
+        jMenuItem9.setText("Consultar Compras");
         MnuConsultas.add(jMenuItem9);
 
         jMenuItem10.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        jMenuItem10.setText("Consultas Ventas");
+        jMenuItem10.setText("Consultar Ventas");
         MnuConsultas.add(jMenuItem10);
 
         menuBar.add(MnuConsultas);
 
-        jMenu5.setText("Salir");
-        menuBar.add(jMenu5);
+        MnuSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/presentacion/images/Salir.png"))); // NOI18N
+        MnuSalir.setText("Salir");
+        menuBar.add(MnuSalir);
 
         setJMenuBar(menuBar);
 
@@ -135,30 +129,21 @@ public class FrmPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 898, Short.MAX_VALUE)
+            .addComponent(Escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 3202, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Escritorio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 521, Short.MAX_VALUE)
+            .addComponent(Escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 1904, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
-
-    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem9ActionPerformed
-
-    private void MnuAlmacenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnuAlmacenActionPerformed
-    
-    FrmCategoria frmCategoria = new FrmCategoria();
-    Escritorio.add(frmCategoria);
-    frmCategoria.setVisible(true);
-    }//GEN-LAST:event_MnuAlmacenActionPerformed
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        FrmCategoria frmCategoria = new FrmCategoria();
+        Escritorio.add(frmCategoria);
+        frmCategoria.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -197,12 +182,12 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane Escritorio;
-    private javax.swing.JMenu MnoVentas;
     private javax.swing.JMenu MnuAcceso;
     private javax.swing.JMenu MnuAlmacen;
     private javax.swing.JMenu MnuCompras;
     private javax.swing.JMenu MnuConsultas;
-    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu MnuSalir;
+    private javax.swing.JMenu MnuVentas;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem2;

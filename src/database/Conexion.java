@@ -1,50 +1,49 @@
 package database;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 public class Conexion {
-   private final String DB_DRIVER = "com.mysql.jdbc.Driver";
-    private final String URL="jdbc:mysql://localhost:3306/";  
-    private final String DB = "puntoventa";
-    private final String USER = "root";
-    private final String PASSWORD = "admin123";
     
-    public Connection  connection ; 
-    public static Conexion singleInstance;
+    private static final String DB_DRIVER = "com.mysql.cj.jdbc.Driver";
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/";
+    private final static String DB = "puntoventa";  
+    private static final String DB_USERNAME = "root";
+    private static final String DB_PASSWORD = "admin123";
     
-    private Conexion(){
-        this.connection = null; 
+    public Connection conectar;
+    public static Conexion singleConnection;
+    
+    private Conexion() {
+        this.conectar = null;
     }
     
-    public  Connection conectar (){
-        try {
-            Class .forName(DB_DRIVER);
-            this.connection = DriverManager.getConnection(
-                    URL + DB, USER, PASSWORD);
-                   
-        } catch ( ClassNotFoundException | SQLException e) {
+    public Connection conectar() {
+        try{
+            Class.forName(DB_DRIVER);  
+            this.conectar = DriverManager.getConnection(
+            DB_URL + DB + "?serverTimezone=UTC",  DB_USERNAME, DB_PASSWORD  
+            );
+        }catch(ClassNotFoundException | SQLException e){
             JOptionPane.showMessageDialog(null, e.getMessage());
-            System.exit(0);
+            System.exit(0);   
         }
-        return  this.connection;
+        return this.conectar;
+    }    
+    
+    public static Conexion getInstance() {
+        if(singleConnection == null){
+            singleConnection = new Conexion();
+        }
+        return singleConnection;
     }
     
-    public void desconnectar(){
-        try {
-            this.connection.close();
-        } catch (SQLException e) {
-             JOptionPane.showMessageDialog(null, e.getMessage());
+    public void desconectar() {
+        try{
+            this.conectar.close();
+        } catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
-    }
-    
-    public synchronized static Conexion getInstance() {
-        
-        if (singleInstance == null){
-            singleInstance = new Conexion();
-        }
-        return singleInstance;
     }
 }

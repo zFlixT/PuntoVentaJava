@@ -60,33 +60,36 @@ public class CategoriaControl {
         }
     }
 
-    public String actualizar(int id, String nombre, String nombreAnterior, String descripcion) {
-
+    public String actualizar(int id, String nombre, String nombreAnterior, String descripcion, boolean estado) {
         if (!nombre.equals(nombreAnterior)) {
-            // Primero verificamos si el nombre ya existe en la base de datos
-            if (DATOS.exist(nombre)) {
-                return "El objeto ya existe";
-            }
-            // Si no existe, actualizamos el objeto
-            obj.setId(id);
-            obj.setNombre(nombre);
-            obj.setDescripcion(descripcion);
-            if (DATOS.update(obj)) {
-                return "OK";
-            } else {
-                return "Error al actualizar";
-            }
-        } else {
-            // Si el nombre no ha cambiado, simplemente actualizamos la descripción
-            obj.setId(id);
-            obj.setNombre(nombre);
-            obj.setDescripcion(descripcion);
-            if (DATOS.update(obj)) {
-                return "OK";
-            } else {
-                return "Error en la actualización";
-            }
-        }
+             // Primero verificamos si el nombre ya existe en la base de datos
+             if (DATOS.exist(nombre)) {
+                 return "El objeto ya existe";
+             }
+             // Si no existe, actualizamos el objeto
+             obj.setId(id);
+             obj.setNombre(nombre);
+             obj.setDescripcion(descripcion);
+             obj.setActivo(estado);
+ 
+             if (DATOS.update(obj)) {
+                 return "OK";
+             } else {
+                 return "Error al actualizar";
+             }
+         } else {
+             // Si el nombre no ha cambiado, simplemente actualizamos la descripción
+             obj.setId(id);
+             obj.setNombre(nombre);
+             obj.setDescripcion(descripcion);
+             obj.setActivo(estado);
+ 
+             if (DATOS.update(obj)) {
+                 return "OK";
+             } else {
+                 return "Error en la actualización";
+             }
+         }
     }
 
     public String desactivar(int id) {
@@ -111,5 +114,9 @@ public class CategoriaControl {
     
     public int  totalMostrados(){
     return this.registrosMostrados;
+    }
+
+    public String actualizar(int parseInt, String text, String nombreAnt, String text0) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

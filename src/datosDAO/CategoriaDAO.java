@@ -26,9 +26,10 @@ public class CategoriaDAO implements CRUDGeneralInterface<Categoria>{
     public List<Categoria> getAll(String list) {
         List<Categoria> registros = new ArrayList();
         try {
-        ps = conectar.conectar().prepareStatement("SELECT * FROM categoria WHERE nombre LIKE ?", 
-                                                 ResultSet.TYPE_SCROLL_INSENSITIVE, 
-                                                 ResultSet.CONCUR_READ_ONLY);
+        ps = conectar.conectar().prepareStatement
+        ("SELECT * FROM categoria WHERE nombre LIKE ?", 
+        ResultSet.TYPE_SCROLL_INSENSITIVE, 
+        ResultSet.CONCUR_READ_ONLY);
         ps.setString(1, "%" + list + "%");
         rs = ps.executeQuery();
         while(rs.next()) {
@@ -124,7 +125,13 @@ public class CategoriaDAO implements CRUDGeneralInterface<Categoria>{
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }finally{
-            ps = null;
+             try {
+                 if (ps != null) {
+                     ps.close();
+                 }
+             } catch (SQLException e) {
+                 JOptionPane.showMessageDialog(null, e.getMessage());
+             }
             conectar.desconectar();
         }
         return resp;
@@ -135,8 +142,8 @@ public class CategoriaDAO implements CRUDGeneralInterface<Categoria>{
          resp = false;
         try {
         ps = conectar.conectar().prepareStatement("select nombre from categoria where id = ?", 
-                                                 ResultSet.TYPE_SCROLL_INSENSITIVE, 
-                                                 ResultSet.CONCUR_READ_ONLY);
+        ResultSet.TYPE_SCROLL_INSENSITIVE, 
+        ResultSet.CONCUR_READ_ONLY);
         ps.setString(1, text);
         rs = ps.executeQuery();
         if(rs.next()) {
